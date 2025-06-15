@@ -1,6 +1,6 @@
 from database import Users, Movies
 
-TOKEN = "5901209945:AAGQqHQmo5xOk-zlWYZJrNQOH48N8FmGoKU"
+TOKEN = ""
 WEBHOOK_URL = ""
 
 # part database
@@ -10,37 +10,37 @@ users = Users()
 movies = Movies()
 
 CHANNEL_ID = {
-    "short_video": -1002639346604,
-    "full_video": -1002639346604,
+    "short_video": ,
+    "full_video": ,
     "ads": {
         1: {
             "type": "channel",
-            "id": -1002639346604,
+            "id": ,
             "link": ""
         },
         2: {
             "type": "channel",
-            "id": -1002639346604,
+            "id": ,
             "link": ""
         },
         3: {
             "type": "channel",
-            "id": -1002639346604,
+            "id": ,
             "link": ""
         },
         4: {
             "type": "channel",
-            "id": -1002639346604,
+            "id": ,
             "link": ""
         },
         5: {
             "type": "channel",
-            "id": -1002639346604,
+            "id": ,
             "link": ""
         },
         6: {
             "type": "channel",
-            "id": -1002639346604,
+            "id": ,
             "link": ""
         }
     }
