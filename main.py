@@ -30,8 +30,8 @@ async def startup():
     print("Webhook ulandi")
 
 @web.post("/webhook")
-async def telegram_webhook(request: Request):
+async def webhook_handler(request: Request):
     data = await request.json()
-    update = Update.de_json(data, app.bot)
-    await app.process_update(update)
+    update = Update.from_dict(data)
+    await telegram_app.process_update(update)
     return {"ok": True}
