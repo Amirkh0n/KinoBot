@@ -1,6 +1,4 @@
 from fastapi import FastAPI, Request
-from telegram.ext.webhook import WebhookServer
-
 
 from telegram.ext import (
     Application, 
@@ -36,6 +34,3 @@ async def telegram_webhook(request: Request):
     update = Update.de_json(data, app.bot)
     await app.process_update(update)
     return {"ok": True}
-
-#if __name__ == "__main__":
-#    main()
