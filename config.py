@@ -1,7 +1,11 @@
 from database import Users, Movies
+import os
+from dotenv import load_dotenv
 
-TOKEN = ""
-WEBHOOK_URL = ""
+load_dotenv()
+
+TOKEN = os.getenv("TOKEN")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
 # part database
 DB_NAME = "database/database.db"
