@@ -28,6 +28,7 @@ web = FastAPI()
 
 @web.on_event("startup")
 async def startup():
+    await app.initialize()
     await app.bot.set_webhook(url=WEBHOOK_URL)
     print("Webhook ulandi")
 
