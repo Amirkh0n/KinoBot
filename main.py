@@ -12,16 +12,18 @@ import commands as cmd
 from models.main import on_startup, on_shutdown
 import messages as msg
 
+# Telegram bot Application
 app = Application.builder().token(TOKEN).post_init(on_startup).post_shutdown(on_shutdown).build()
 app.add_handler(CommandHandler("start", cmd.start_handle))
 app.add_handler(MessageHandler(filters.TEXT, msg.message_handle))
 app.add_handler(MessageHandler(filters.VIDEO, msg.video_handle))
 
+# Faqat polling uchun (localda sinash)
 def main():
     print("Bot is running...!")
     app.run_polling()
 
-
+# FastAPI ilova
 web = FastAPI()
 
 @web.on_event("startup")
@@ -33,5 +35,9 @@ async def startup():
 async def webhook_handler(request: Request):
     data = await request.json()
     update = Update.from_dict(data)
-    await telegram_app.process_update(update)
+    await app.process_update(update)  # <-- TO‘G‘RILANGAN
     return {"ok": True}
+
+@web.get("/")
+def root():
+    return {"message": "Bot ishlayapti 🚀"}
