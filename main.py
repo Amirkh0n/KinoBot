@@ -34,7 +34,7 @@ async def startup():
 @web.post("/webhook")
 async def webhook_handler(request: Request):
     data = await request.json()
-    update = Update.from_dict(data)
+    update = Update.de_json(data, app.bot)
     await app.process_update(update)  # <-- TO‘G‘RILANGAN
     return {"ok": True}
 
