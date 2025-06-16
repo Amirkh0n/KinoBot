@@ -32,11 +32,15 @@ async def startup():
     await app.bot.set_webhook(url=WEBHOOK_URL)
     print("Webhook ulandi")
 
+@web.on_event("shutdown")
+async def shutdown():
+    await app.shutdown()
+
 @web.post("/webhook")
 async def webhook_handler(request: Request):
     data = await request.json()
     update = Update.de_json(data, app.bot)
-    await app.process_update(update)  # <-- TO‘G‘RILANGAN
+    await app.process_update(update)
     return {"ok": True}
 
 @web.get("/")
