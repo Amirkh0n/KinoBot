@@ -28,6 +28,7 @@ web = FastAPI()
 
 @web.on_event("startup")
 async def startup():
+    await on_startup(app)  # ORM ni init qilish
     await app.initialize()
     await app.bot.set_webhook(url=WEBHOOK_URL)
     print("Webhook ulandi")
@@ -35,6 +36,7 @@ async def startup():
 @web.on_event("shutdown")
 async def shutdown():
     await app.shutdown()
+    await on_shutdown(app)
 
 @web.post("/webhook")
 async def webhook_handler(request: Request):
